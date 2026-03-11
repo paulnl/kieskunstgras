@@ -1,0 +1,10 @@
+# Jekyll configuratie voor GitHub Pages
+# Deze site gebruikt geen Jekyll, maar deze config zorgt ervoor dat
+# GitHub Pages de site correct serveert
+
+title: Kieskunstgras.nl
+description: Wij leveren en plaatsen kunstgras voor iedere tuin
+url: https://kieskunstgras.github.io
+
+# Jekyll uitschakelen (we gebruiken pure HTML)
+# Dit voorkomt dat Jekyll de bestanden probeert te verwerken
