@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Ontdek ons assortiment hoogwaardige kunstgrassen. Van Havanna tot Montana - wij hebben het perfecte kunstgras voor uw tuin. 8 jaar garantie.">
+    <meta name="keywords" content="kunstgras assortiment, kunstgras soorten, kunstgras prijzen, havanna, evergreen, montana">
+    <meta name="author" content="Kieskunstgras.nl">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Onze Kunstgrassen - Kieskunstgras.nl">
+    <meta property="og:description" content="Ontdek ons assortiment hoogwaardige kunstgras voor iedere tuin">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kieskunstgras.nl/grassen.html">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kieskunstgras.nl/grassen.html">
+    
+    <title>Onze Kunstgrassen - Kieskunstgras.nl</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/kieskunstgras_v1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/kieskunstgras_v1.png" alt="Kieskunstgras.nl Logo">
+                <span class="logo-text">Kieskunstgras</span>
+            </a>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#kwaliteit">Kwaliteit</a></li>
+                    <li><a href="index.html#oplossing">Voordelen</a></li>
+                    <li><a href="index.html#waarom">Waarom</a></li>
+                    <li><a href="grassen.html" class="active">Onze grassen</a></li>
+                    <li><a href="contact.html" class="nav-cta">Gratis advies aanvragen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Grass Hero -->
+        <div class="grass-hero">
+            <div class="container">
+                <h1>Onze Kunstgrassen</h1>
+                <p>Ontdek ons assortiment hoogwaardige kunstgras voor iedere tuin</p>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading" style="text-align: center; padding: 3rem;">
+            <p>Kunstgrassen laden...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error" class="error" style="text-align: center; padding: 3rem; color: #c33; display: none;">
+            <p>Er is een fout opgetreden bij het laden van de kunstgrassen. Probeer het later opnieuw.</p>
+        </div>
+
+        <!-- Grass Grid -->
+        <div id="grass-grid" class="grass-grid" style="display: none;">
+            <!-- Grass cards will be loaded here by JavaScript -->
+        </div>
+
+        <!-- CTA Section -->
+        <section style="background-color: #e8f5e9; padding: 4rem 2rem; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #333;">Interesse in ons kunstgras?</h2>
+                <p style="color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Neem contact met ons op voor een vrijblijvend advies of vraag een offerte aan. Wij helpen u graag bij het kiezen van het juiste kunstgras voor uw tuin.</p>
+                <a href="contact.html" class="btn-primary">Contact opnemen</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>
+                    <strong>Kieskunstgras.nl</strong><br>
+                    Telefoon: <a href="tel:+31653496749">06 53 496 749</a><br>
+                    Email: <a href="mailto:info@kieskunstgras.nl">info@kieskunstgras.nl</a><br>
+                    Openingstijden: Ma - Zo: 08:00 - 20:00
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Snelle Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="grassen.html">Onze grassen</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Onze Voordelen</h4>
+                <ul>
+                    <li>✓ 8 jaar garantie</li>
+                    <li>✓ Gratis advies</li>
+                    <li>✓ Professionele plaatsing</li>
+                    <li>✓ Loodvrij en veilig</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kieskunstgras.nl - Wij leveren en plaatsen kunstgras voor iedere tuin</p>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Format price with comma as decimal separator
+        function formatPrice(price) {
+            return price.toFixed(2).replace('.', ',');
+        }
+
+        // Capitalize and replace underscores with spaces
+        function formatKey(key) {
+            return key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+        }
+
+        // Load grass data from JSON
+        async function loadGrassData() {
+            const loadingEl = document.getElementById('loading');
+            const errorEl = document.getElementById('error');
+            const gridEl = document.getElementById('grass-grid');
+
+            try {
+                const response = await fetch('data/grass-types.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load grass data');
+                }
+                
+                const grassTypes = await response.json();
+                
+                // Filter only active grass types
+                const activeGrass = grassTypes.filter(grass => grass.actief);
+                
+                // Generate HTML for each grass card
+                const grassCards = activeGrass.map(grass => {
+                    const specsHtml = Object.entries(grass.specificaties)
+                        .map(([key, value]) => `
+                            <tr>
+                                <td>${formatKey(key)}</td>
+                                <td>${value}</td>
+                            </tr>
+                        `).join('');
+
+                    return `
+                        <div class="grass-card">
+                            <div class="grass-card-header">
+                                <h2>${grass.naam}</h2>
+                            </div>
+                            <div class="grass-card-body">
+                                <div class="grass-price">
+                                    €${formatPrice(grass.prijs)} <span>/ m²</span>
+                                </div>
+                                <div class="grass-specs">
+                                    <table>
+                                        <tbody>
+                                            ${specsHtml}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Update grid with grass cards
+                gridEl.innerHTML = grassCards;
+                
+                // Hide loading, show grid
+                loadingEl.style.display = 'none';
+                gridEl.style.display = 'grid';
+                
+            } catch (error) {
+                console.error('Error loading grass data:', error);
+                loadingEl.style.display = 'none';
+                errorEl.style.display = 'block';
+            }
+        }
+
+        // Load grass data when page loads
+        document.addEventListener('DOMContentLoaded', loadGrassData);
+    </script>
+</body>
+</html>

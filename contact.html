@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Neem contact op met Kieskunstgras.nl voor een vrijblijvend advies of offerte. Wij helpen u graag bij het kiezen van het perfecte kunstgras.">
+    <meta name="keywords" content="contact kunstgras, offerte aanvragen, kunstgras advies, gratis advies">
+    <meta name="author" content="Kieskunstgras.nl">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contact - Kieskunstgras.nl">
+    <meta property="og:description" content="Neem contact op met Kieskunstgras.nl voor een vrijblijvend advies of offerte.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kieskunstgras.nl/contact.html">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kieskunstgras.nl/contact.html">
+    
+    <title>Contact - Kieskunstgras.nl</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/kieskunstgras_v1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/kieskunstgras_v1.png" alt="Kieskunstgras.nl Logo">
+                <span class="logo-text">Kieskunstgras</span>
+            </a>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#kwaliteit">Kwaliteit</a></li>
+                    <li><a href="index.html#oplossing">Voordelen</a></li>
+                    <li><a href="index.html#waarom">Waarom</a></li>
+                    <li><a href="grassen.html">Onze grassen</a></li>
+                    <li><a href="contact.html" class="nav-cta active">Gratis advies aanvragen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <h1>Neem contact met ons op</h1>
+                <p>Vul het formulier in en wij nemen zo snel mogelijk contact met u op.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-form-wrapper" id="form-container">
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="naam">Naam *</label>
+                            <input type="text" id="naam" name="naam" required placeholder="Uw volledige naam">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="uw@email.nl">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefoon">Telefoonnummer *</label>
+                            <input type="tel" id="telefoon" name="telefoon" required placeholder="06 12 34 56 78">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="adres">Adres</label>
+                            <input type="text" id="adres" name="adres" placeholder="Straat en huisnummer">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plaats">Plaats</label>
+                            <input type="text" id="plaats" name="plaats" placeholder="Woonplaats">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="onderwerp">Ik wil graag *</label>
+                            <select id="onderwerp" name="onderwerp" required>
+                                <option value="">Kies een optie...</option>
+                                <option value="Meer informatie">Ik wil meer informatie</option>
+                                <option value="Afspraak maken">Ik wil graag een afspraak maken</option>
+                                <option value="Gratis advies op maat">Ik wil graag gratis advies op maat</option>
+                            </select>
+                        </div>
+
+                        <!-- Hidden field for email subject -->
+                        <input type="hidden" name="_subject" value="Nieuw contactformulier Kieskunstgras.nl">
+                        
+                        <!-- Redirect after submission -->
+                        <input type="hidden" name="_next" value="https://kieskunstgras.nl/contact.html?success=true">
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%;">Verstuur bericht</button>
+                    </form>
+
+                    <!-- Alternative: Direct email link -->
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #ddd; text-align: center;">
+                        <p style="color: #666; margin-bottom: 1rem;">Of stuur ons direct een e-mail:</p>
+                        <a href="mailto:info@kieskunstgras.nl?subject=Contact%20via%20website&body=Naam:%20%0ATelefoon:%20%0AAdres:%20%0AWoonplaats:%20%0A%0AIk%20wil%20graag:%20" class="btn-secondary" style="display: inline-block;">Open email programma</a>
+                    </div>
+                </div>
+
+                <!-- Success Message (hidden by default) -->
+                <div id="success-message" class="contact-form-wrapper" style="display: none; text-align: center;">
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h2 style="color: #333; margin-bottom: 1rem;">Bedankt voor uw bericht!</h2>
+                        <p style="color: #666; margin-bottom: 2rem;">Wij hebben uw bericht ontvangen en nemen binnen 24 uur contact met u op.</p>
+                        <a href="index.html" class="btn-primary">Terug naar home</a>
+                    </div>
+                </div>
+                
+                <div class="contact-info-sidebar">
+                    <div class="contact-card">
+                        <h3>Contactgegevens</h3>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B9444" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <div>
+                                <strong>Telefoon</strong>
+                                <a href="tel:+31653496749">06 53 496 749</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B9444" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <div>
+                                <strong>E-mail</strong>
+                                <a href="mailto:info@kieskunstgras.nl">info@kieskunstgras.nl</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B9444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <div>
+                                <strong>Openingstijden</strong>
+                                <span>Ma - Zo: 08:00 - 20:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card why-card">
+                        <h3>Waarom kiest u voor ons?</h3>
+                        <ul>
+                            <li>✓ Gratis en vrijblijvend advies</li>
+                            <li>✓ 8 jaar garantie</li>
+                            <li>✓ Professionele plaatsing</li>
+                            <li>✓ Loodvrij en veilig</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>
+                    <strong>Kieskunstgras.nl</strong><br>
+                    Telefoon: <a href="tel:+31653496749">06 53 496 749</a><br>
+                    Email: <a href="mailto:info@kieskunstgras.nl">info@kieskunstgras.nl</a><br>
+                    Openingstijden: Ma - Zo: 08:00 - 20:00
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Snelle Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="grassen.html">Onze grassen</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Onze Voordelen</h4>
+                <ul>
+                    <li>✓ 8 jaar garantie</li>
+                    <li>✓ Gratis advies</li>
+                    <li>✓ Professionele plaatsing</li>
+                    <li>✓ Loodvrij en veilig</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kieskunstgras.nl - Wij leveren en plaatsen kunstgras voor iedere tuin</p>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Check if form was successfully submitted (via URL parameter)
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
