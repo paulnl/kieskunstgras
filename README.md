@@ -12,7 +12,7 @@ https://kieskunstgras.github.io
 .
 ├── index.html              # Homepage
 ├── grassen/
-│   └── index.html         # Kunstgrassen pagina
+│   └── index.html         # Kunstgrassen pagina (JS laadt JSON)
 ├── contact/
 │   └── index.html         # Contact pagina
 ├── 404.html               # 404 foutpagina
@@ -84,6 +84,7 @@ Alle afbeeldingen staan in de `images/` map. Belangrijke afbeeldingen:
 - `bicolour.png` - BiColor icoon
 - `ecofriendelijk.png` - Eco icoon
 - `intensiefgebruik.png` - Gebruik icoon
+- `aanbieding.png` - Aanbieding badge
 - `*.png` - Product afbeeldingen
 
 ## 🔧 Lokale Testen
