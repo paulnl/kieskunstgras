@@ -81,6 +81,38 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        textarea.form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        textarea.form-control:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .form-group select:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #e0e0e0;
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -125,9 +157,6 @@
                     <p style="color: #666; margin-bottom: 2rem;">Vul onderstaand formulier in en we nemen binnen 24 uur contact met u op.</p>
                     
                     <form id="contactForm" method="POST" action="">
-                        <!-- TODO: Vervang de action URL met je N8N webhook URL -->
-                        <!-- Voorbeeld: action="https://n8n.jouwdomein.nl/webhook/contact-form" -->
-                        
                         <div class="form-group">
                             <label for="naam">Naam *</label>
                             <input type="text" id="naam" name="naam" required placeholder="Uw volledige naam">
@@ -160,7 +189,20 @@
                                 <option value="Meer informatie">Ik wil meer informatie</option>
                                 <option value="Afspraak maken">Ik wil graag een afspraak maken</option>
                                 <option value="Gratis advies op maat">Ik wil graag gratis advies op maat</option>
+                                <option value="Vraag over gras">Ik heb een vraag over een specifiek gras</option>
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grasSoort">Betreft gras (optioneel) <span id="grassLoading" style="display: none;"><span class="loading-spinner"></span>Laden...</span></label>
+                            <select id="grasSoort" name="grasSoort" disabled>
+                                <option value="">Kies een gras...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="opmerkingen">Opmerkingen / Vragen</label>
+                            <textarea id="opmerkingen" name="opmerkingen" class="form-control" placeholder="Vertel ons meer over uw wensen, tuin of stel hier uw vraag..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn-primary btn-submit" id="submitBtn">
@@ -242,6 +284,70 @@
             document.getElementById('nav-menu').classList.toggle('active');
         }
         
+        // Load grass types for dropdown
+        async function loadGrassTypes() {
+            const select = document.getElementById('grasSoort');
+            const loadingIndicator = document.getElementById('grassLoading');
+            
+            loadingIndicator.style.display = 'inline';
+            
+            const possiblePaths = [
+                '../data/grass-types.json',
+                './data/grass-types.json',
+                'data/grass-types.json',
+                '/data/grass-types.json'
+            ];
+            
+            let grassTypes = null;
+            
+            for (const path of possiblePaths) {
+                try {
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        grassTypes = await response.json();
+                        break;
+                    }
+                } catch (e) {
+                    console.log('Path failed:', path);
+                }
+            }
+            
+            // Fallback to inline data if fetch fails
+            if (!grassTypes) {
+                grassTypes = getInlineGrassData();
+            }
+            
+            const activeGrass = grassTypes.filter(grass => grass.actief);
+            
+            // Populate dropdown
+            select.innerHTML = '<option value="">Kies een gras...</option>';
+            activeGrass.forEach(grass => {
+                const option = document.createElement('option');
+                option.value = grass.naam;
+                option.textContent = grass.naam + ' (€' + grass.prijs.toFixed(2).replace('.', ',') + '/m²)';
+                select.appendChild(option);
+            });
+            
+            select.disabled = false;
+            loadingIndicator.style.display = 'none';
+        }
+        
+        function getInlineGrassData() {
+            return [
+                {"id": 1, "naam": "Havanna 30", "prijs": 25.50, "actief": true},
+                {"id": 2, "naam": "Evergreen 30", "prijs": 31.00, "actief": true},
+                {"id": 3, "naam": "Evergreen 40", "prijs": 33.50, "actief": true},
+                {"id": 4, "naam": "Evergreen 50", "prijs": 38.50, "actief": true},
+                {"id": 5, "naam": "Montana 40", "prijs": 32.50, "actief": true},
+                {"id": 6, "naam": "Montana 50", "prijs": 34.95, "actief": true},
+                {"id": 7, "naam": "Royal 35 - Eco", "prijs": 35.00, "actief": true},
+                {"id": 8, "naam": "NaturalSupreme 40", "prijs": 35.50, "actief": true}
+            ];
+        }
+        
+        // Load grass types on page load
+        document.addEventListener('DOMContentLoaded', loadGrassTypes);
+        
         // Form handling
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -250,20 +356,16 @@
             const submitBtn = document.getElementById('submitBtn');
             const container = document.getElementById('contactFormContainer');
             
-            // N8N webhook URL - TEST MODE
-            // TODO: Voor productie, vervang dit met de webhook URL (zonder -test)
             const N8N_WEBHOOK_URL = 'https://n8n.synapsisai.nl/webhook-test/807f17a9-0e59-4a00-bd6d-da7774fb5908';
             
             if (!N8N_WEBHOOK_URL) {
-                alert('N8N webhook URL is nog niet geconfigureerd. Pas de JavaScript aan in contact/index.html');
+                alert('N8N webhook URL is nog niet geconfigureerd.');
                 return;
             }
             
-            // Show loading state
             form.classList.add('form-submitting');
             submitBtn.innerHTML = '<span class="submit-spinner"></span>Versturen...';
             
-            // Collect form data
             const formData = {
                 naam: document.getElementById('naam').value,
                 email: document.getElementById('email').value,
@@ -271,6 +373,8 @@
                 adres: document.getElementById('adres').value,
                 plaats: document.getElementById('plaats').value,
                 onderwerp: document.getElementById('onderwerp').value,
+                grasSoort: document.getElementById('grasSoort').value,
+                opmerkingen: document.getElementById('opmerkingen').value,
                 datum: new Date().toISOString()
             };
             
@@ -284,7 +388,6 @@
                 });
                 
                 if (response.ok) {
-                    // Show success message
                     container.innerHTML = `
                         <div class="form-success">
                             <div class="form-success-icon">✓</div>
