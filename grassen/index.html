@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Ontdek ons assortiment hoogwaardige kunstgrassen. 8 jaar garantie, loodvrij en ecovriendelijk. Bekijk alle soorten kunstgras.">
+    <meta name="keywords" content="kunstgrassen, kunstgras assortiment, kunstgras soorten, kunstgras kopen">
+    <meta name="author" content="Kieskunstgras.nl">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Onze Kunstgrassen - Kieskunstgras.nl">
+    <meta property="og:description" content="Ontdek ons assortiment hoogwaardige kunstgrassen voor iedere tuin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kieskunstgras.github.io/grassen/">
+    <meta property="og:image" content="/images/hero-img.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Onze Kunstgrassen - Kieskunstgras.nl">
+    <meta name="twitter:description" content="Ontdek ons assortiment hoogwaardige kunstgrassen.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kieskunstgras.github.io/grassen/">
+    
+    <title>Onze Kunstgrassen - Kieskunstgras.nl</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/kieskunstgras_v1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/images/kieskunstgras_v1.png" alt="Kieskunstgras.nl Logo">
+                <span class="logo-text">Kieskunstgras</span>
+            </a>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#kwaliteit">Kwaliteit</a></li>
+                    <li><a href="/#oplossing">Perfecte oplossing</a></li>
+                    <li><a href="/#waarom">Waarom</a></li>
+                    <li><a href="/grassen/" class="active">Onze grassen</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Grass Hero -->
+        <div class="grass-hero">
+            <div class="container">
+                <h1>Onze Kunstgrassen</h1>
+                <p>Ontdek ons assortiment hoogwaardige kunstgras voor iedere tuin</p>
+            </div>
+        </div>
+
+        <!-- Grass Grid -->
+        <div id="grass-grid" class="grass-grid">
+            <div class="loading">Kunstgrassen laden...</div>
+        </div>
+
+        <!-- CTA Section -->
+        <section style="background-color: #e8f5e9; padding: 4rem 2rem; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #333;">Interesse in ons kunstgras?</h2>
+                <p style="color: #666; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Neem contact met ons op voor een vrijblijvend advies of vraag een offerte aan. Wij helpen u graag bij het kiezen van het juiste kunstgras voor uw tuin.</p>
+                <a href="/contact/" style="display: inline-block; background-color: #0B9444; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 5px; font-weight: 600;">Contact opnemen</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kieskunstgras.nl - Wij leveren en plaatsen kunstgras voor iedere tuin</p>
+        </div>
+    </footer>
+    
+    <script src="/js/grassen.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
