@@ -30,7 +30,7 @@
   {
     "id": 2,
     "naam": "Evergreen 30",
-    "prijs": 31.5,
+    "prijs": 31.0,
     "actief": true,
     "aanbieding": false,
     "aanbiedingsprijs": null,
