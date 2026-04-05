@@ -222,15 +222,5 @@
       "waterdoorlatendheid": "60 liter/min/m2",
       "rollengte": "25 m"
     }
-  },
-  {
-    "id": 9,
-    "naam": "Test Gras 30",
-    "prijs": 24.99,
-    "actief": true,
-    "aanbieding": false,
-    "aanbiedingsprijs": null,
-    "afbeelding": "/images/nieuw.png",
-    "specificaties": {}
   }
 ]
